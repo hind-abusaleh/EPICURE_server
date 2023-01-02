@@ -31,4 +31,12 @@ export class RestaurantsDal {
   public findAll() {
     return Restaurants.find();
   }
+
+  public async getPopularRestaurants(){
+    const data = await Restaurants.aggregate([
+      { $match: { popular: true } },
+      
+    ]);
+    return data;
+  }
 }

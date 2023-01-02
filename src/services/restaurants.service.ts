@@ -12,4 +12,10 @@ export class RestaurantsService {
     const res = dal.createRestaurant(restaurant);
     return res;
   }
+
+  public async getPopularRestaurants(){
+    const dal = new RestaurantsDal();
+    const res = await dal.getPopularRestaurants();
+    return res;
+  }
 }

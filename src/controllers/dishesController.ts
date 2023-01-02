@@ -14,4 +14,16 @@ export class DishesController {
     const dish = await service.createDish(params);
     return res.send(dish);
   }
+  public static async getDishesByID(req: Request, res: Response){
+    const params = req.body;
+    const service = new DishesService();
+    const dishes = await service.getDishesByID(params);
+    return res.send(dishes);
+  }
+
+  public static async getPopularDishes(req: Request, res: Response){
+    const service = new DishesService();
+    const dishes = await service.getPopularDishes();
+    return res.send(dishes);
+  }
 }

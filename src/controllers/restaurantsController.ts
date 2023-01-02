@@ -14,4 +14,10 @@ export class RestaurantsController {
     const restaurant = await service.createRestaurant(params);
     return res.send(restaurant);
   }
+
+  public static async getPopularRestaurants(req: Request, res: Response){
+    const service = new RestaurantsService();
+    const restaurants = await service.getPopularRestaurants();
+    return res.send(restaurants);
+  }
 }

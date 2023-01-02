@@ -29,4 +29,16 @@ export class DishesDal {
   public findAll() {
     return Dishes.find();
   }
+
+  public async getPopularDishes(){
+    const data = await Dishes.aggregate([
+      { $match: { popular: true } },
+      
+    ]);
+    return data;
+  }
+
+  public async getDishesByID(param: any){
+    return Dishes.find( { _id : { $in : param } } );
+  }
 }

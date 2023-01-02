@@ -1,6 +1,15 @@
 import { Request, Response } from "express";
 import { ChefsService } from "../services/chefs.service";
 export class ChefsController {
+  public static async getTopChef(req: Request, res: Response){
+    try {
+      const service = new ChefsService();
+      const top_chef = await service.getTopChef();
+      return res.send(top_chef);
+    } catch (error) {
+      return res.send(error);
+    }
+  };
 public static async getChefs(req: Request, res: Response) {
     try {
         const service = new ChefsService();

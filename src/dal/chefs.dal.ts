@@ -32,7 +32,14 @@ export class ChefsDal {
   public findAll(query: any = null) {
     return Chefs.find(query);
   }
-
+  
+  public async getTopChef() {
+    const data = await Chefs.aggregate([
+      { $match: { top_chef: true } },
+      
+    ]);
+    return data;
+  }
   public async getChef(param: { [key: string]: string }) {
     const data = await Chefs.aggregate([
       { $match: { name: `${param.name}` } },
