@@ -41,4 +41,12 @@ export class DishesDal {
   public async getDishesByID(param: any){
     return Dishes.find( { _id : { $in : param } } );
   }
+
+  public async getDishesByType_ResName(param: any){
+    const data = await Dishes.aggregate([
+      { $match: { restaurant: param[0], dishType: param[1] } },
+    ]);
+    return data;
+  }
+
 }

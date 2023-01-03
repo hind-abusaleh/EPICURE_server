@@ -24,4 +24,10 @@ export class DishesService {
     const res = dal.getDishesByID(params);
     return res;
   }
+
+  public async getDishesByType_ResName(params: any){
+    const dal = new DishesDal();
+    const res = dal.getDishesByType_ResName(params);
+    return res;
+  }
 }
