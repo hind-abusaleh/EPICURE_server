@@ -27,4 +27,8 @@ export class UsersService {
             return res;
         });
     };
+    public static async getuser(args:any){
+        const res = UsersDal.getuser(args);
+        return res;
+    };
 };

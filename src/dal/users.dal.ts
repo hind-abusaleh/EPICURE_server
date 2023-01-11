@@ -30,4 +30,13 @@ export class UsersDal {
     }
     return false;
   }
+
+  public static async getuser(param: any){
+    const data = await User.aggregate([
+      { $match: { email: param.email } },
+    ]);
+    /*if(data[0].bag_items.length > 0) return {status : "full", data : data[0]};
+    return {status : "empty", data : data[0]};*/
+    return data[0];
+  }
 }

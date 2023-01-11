@@ -12,4 +12,10 @@ public static async register(req: Request, res: Response) {
     const user = await UsersService.register(args);
     res.send(user);
 };
+public static async getuser(req: Request, res: Response){
+    const args = req.body;
+    const items = await UsersService.getuser(args);
+    res.send(items);
+}
+
 };

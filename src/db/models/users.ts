@@ -18,6 +18,14 @@ const usersSchema = new mongoose.Schema(
         type: String,
         required: true,
     },
+    bag_items:{
+      type: Array,
+      required: false,
+    },
+    history_orders:{
+      type: Array,
+      required: false,
+    }
   },
   { timestamps: true }
 );
