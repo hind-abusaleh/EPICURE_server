@@ -17,5 +17,14 @@ public static async getuser(req: Request, res: Response){
     const items = await UsersService.getuser(args);
     res.send(items);
 }
-
+public static async updateUsersBag(req: Request, res: Response){
+  const args = req.body;
+  const items = await UsersService.updateUsersBag(args);
+  res.send(items);
+}
+public static async getLastHistoryOrder(req: Request, res: Response){
+  const args = req.body;
+  const items = await UsersService.getLastHistoryOrder(args);
+  res.send(items);
+}
 };

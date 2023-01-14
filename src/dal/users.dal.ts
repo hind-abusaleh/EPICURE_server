@@ -25,18 +25,29 @@ export class UsersDal {
     const data = await User.findOne({
       email: user.email,
     });
-    if(data?.email === user.email){
-        return true;
+    if (data?.email === user.email) {
+      return true;
     }
     return false;
   }
 
-  public static async getuser(param: any){
+  public static async getuser(param: any) {
     const data = await User.aggregate([
       { $match: { email: param.email } },
     ]);
-    /*if(data[0].bag_items.length > 0) return {status : "full", data : data[0]};
-    return {status : "empty", data : data[0]};*/
     return data[0];
+  }
+
+  public static async updateUsersBag(param: any) {
+    const data = await User.updateOne({ email: param.email }, { $set: { 'bag_items': [] } })
+    return;
+  }
+  public static async getLastHistoryOrder(param: any){
+    const data = await User.aggregate([
+      { $match: { email: param.email } },
+    ]);
+    const len = data[0].history_orders.length;
+    if( len > 0) return  data[0].history_orders[len-1];
+    return;
   }
 }

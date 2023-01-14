@@ -31,4 +31,12 @@ export class UsersService {
         const res = UsersDal.getuser(args);
         return res;
     };
+    public static async updateUsersBag(args:any){
+        const res = UsersDal.updateUsersBag(args);
+        return res;
+    };
+    public static async getLastHistoryOrder(args:any){
+        const res = UsersDal.getLastHistoryOrder(args);
+        return res;
+    }
 };
